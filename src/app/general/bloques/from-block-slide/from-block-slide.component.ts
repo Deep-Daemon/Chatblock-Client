@@ -79,7 +79,7 @@ export class FromBlockSlideComponent implements OnInit {
   }
   
 
-  saveBlockSlide(c_e: string) {
+  saveBlockSlide(c_e?: string) {
     if(this.globals.elementosG.length > 0 && this.valiacion_datos() && (c_e == 'crear')){
     if (this.fromBlksSlide.invalid) {
       return;
