@@ -1,0 +1,202 @@
+.example-list {
+  max-width: 100%;
+  min-width:473px;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.example-box {
+  padding: 5px 5px;
+  background: brown;
+  border-right: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 16px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.conf{
+  height: 10px;
+  width: 400px;
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+
+
+#campo_btn{
+  height:45px;
+  border-radius: 50px;
+  float: right;
+}
+
+#campo_btn2{
+  background: white;
+}
+
+
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+
+/*hr{
+  width: 50px;
+  height: 0px;
+  border-bottom: 1px solid black;
+  -webkit-transform: translateY(54px) translateX(-830px) rotate(90deg); 
+}*/
+
+.contenedor_lineas{ 
+  background: black;
+  float: left; 
+  width: 10px;
+  height: 10px;
+   
+}
+
+.connector_canvas{
+  position: relative;
+  background: white;
+  width:100%;
+  height:100%;
+  stroke:#5c96bc;
+  stroke-width:2;
+  float: right;
+}
+
+#line_1{
+  background: red;
+  width: 50px;
+  height: 0px;
+}
+
+#line_1{
+  background: red;
+  width: 50px;
+  height: 0px;
+  border-bottom: 1px solid black;
+  -webkit-transform: translateY(3px) translateX(810px) rotate(90deg); 
+}
+
+#line_4_1{
+  background: blue;
+  width: 25px;
+  height: 0px;
+  border-bottom: 1px solid black;
+  -webkit-transform: translateY(-27px) translateX(827px) rotate(90deg);
+
+}
+
+#line_4_2{
+  background: blue;
+  width: 463px;
+  height: 0px;
+  border-bottom: 1px solid black;
+  -webkit-transform: translateY(-31px) translateX(838px) ;
+
+}
+
+#line_4_3{
+  background: blue;
+  width: 23px;
+  height: 0px;
+  border-bottom: 1px solid black;
+  -webkit-transform: translateY(-38px) translateX(1288px) rotate(90deg);
+
+}
+
+#line_2{
+  background: rgb(255, 255, 44);
+  width: 50px;
+  height: 0px;
+  border-bottom: 1px solid black;
+  -webkit-transform: translateY(3px) translateX(1280px) rotate(90deg); 
+
+}
+
+#line_3{
+  background: rgb(28, 212, 28);
+  width: 50px;
+  height: 0px;
+  border-bottom: 1px solid black;
+  -webkit-transform: translateY(3px) translateX(10px) rotate(90deg); 
+}
+
+.tag_left{
+  position: relative;
+  float: left;
+  top: 7px;
+  background: rgb(160, 160, 241); 
+  width: 26px !important;
+  height: 26px; 
+  border-radius: 50px;
+}
+
+.tag_rigth{
+  position: relative;
+  float: right;
+  top: 6px;
+  background: rgb(255, 117, 117);
+  width: 26px;
+  height: 26px;
+  border-radius: 50px;
+  transform: rotate(90deg);
+}
+
+.icono_tag1{
+  position: relative;
+  top: -2px;
+  left: -5px;
+}
+
+.icono_tag2{
+  position: relative;
+  top: -2px;
+  left: -6px;
+  transform: rotate(-90deg);
+}
+
+#linea_tag_1{
+  position: relative;
+  top: -2px;
+}
+
+
+
+
+

@@ -1,0 +1,348 @@
+<div cdkDropListGroup class="tamlienzo">
+
+
+        <table class="table table-striped" >
+            <tbody>
+                <tr id="campo_btn2" *ngFor="let arrbloques of globals.AllBlocks , let index2 = index"  >
+
+                        <table *ngIf="(globals.AllBlocks.length-1) > index2" cellspacing="0" cellpadding="0" border="0px" style="border: hidden; background: white; margin : 0; padding : 0; border : 0; border-collapse : collapse; ">
+                            <tbody style="border: hidden; background: white; margin : 0; padding : 0; border-spacing : 0 0; border-collapse : collapse; ">                                
+                                <tr style="border: hidden; background: white; margin : 0; padding : 0; border-spacing : 0 0; border-collapse : collapse; ">
+                                
+                                    <td style="border: hidden; background: white;">
+                                        <button class="boton_add_circle" *ngIf="(globals.AllBlocks.length-1) > index2" mat-button (click)="addFila(index2)">
+                                            <mat-icon >add_circle</mat-icon>
+                                        </button>
+                                        <button *ngIf="(globals.AllBlocks.length-1) > index2" mat-button (click)="deleteFila(index2)">
+                                        <mat-icon>remove_circle</mat-icon>
+                                        </button></td>
+                                
+                                    <td *ngIf="index2 > 0 && globals.AllBlocks[index2-1].length > 0 && arrbloques.length > 0" style="border: hidden; width: 100%; height: 97px; background: white; margin : 0; padding : 0; border-spacing : 0 0; border-collapse : collapse; ">
+                                        <svg class="connector_canvas" style="float: right;"></svg>
+                                                                       
+                                    </td>  
+
+                                </tr>                                
+                            </tbody>                                
+                        </table>
+
+                        <div *ngIf="arrbloques.length == 0 && index2 == globals.AllBlocks.length-1" style="height: 50px; width: 20px;"></div>
+                   
+                    
+                      <div class="example-box" style="margin : 0; padding : 0; border : 0;">
+                          <div cdkDropList cdkDropListOrientation="horizontal" class="example-list"
+                          [cdkDropListData]="arrbloques"
+                          (cdkDropListDropped)="drop($event)">                          
+                          
+                            <div  *ngFor="let bloque of arrbloques , let index3 = index" cdkDrag>
+                            <div *ngIf="bloque.blocktype == 'informativo'" class="conf" style="background: #1f5b25da" > 
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>                                    
+                                              {{bloque.namestate}}
+                                            </td>
+                                            <td>
+                                                <button id="campo_btn" mat-button (click)="handleEditClickBlk(bloque)">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                                <button id="campo_btn" mat-button (click)="handleDeleteClickBlk(bloque, index2)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div *ngIf="bloque.blocktype == 'input'" class="conf" style="background: #1E4DC2" > 
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>                                    
+                                              {{bloque.namestate}}
+                                            </td>
+                                            <td>
+                                                <button id="campo_btn" mat-button (click)="handleEditClickBlk(bloque)">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                                <button id="campo_btn" mat-button (click)="handleDeleteClickBlk(bloque, index2)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div *ngIf="bloque.blocktype == 'quickReply'" class="conf" style="background: #5a2fd3" > 
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>                                    
+                                              {{bloque.namestate}}
+                                            </td>
+                                            <td>
+                                                <button id="campo_btn" mat-button (click)="handleEditClickBlk(bloque)">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                                <button id="campo_btn" mat-button (click)="handleDeleteClickBlk(bloque, index2)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+    
+                            <div *ngIf="bloque.blocktype == 'slide'" class="conf" style="background: rgb(166, 60, 225)" > 
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>                                    
+                                              {{bloque.namestate}}
+                                            </td>
+                                            <td>
+                                                <button id="campo_btn" mat-button (click)="handleEditClickBlk(bloque)">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                                <button id="campo_btn" mat-button (click)="handleDeleteClickBlk(bloque, index2)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div *ngIf="bloque.blocktype == 'informativoDinamico'" class="conf" style="background: #b11b16" > 
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>                                    
+                                              {{bloque.namestate}}
+                                            </td>
+                                            <td>
+                                                <button id="campo_btn" mat-button (click)="handleEditClickBlk(bloque)">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                                <button id="campo_btn" mat-button (click)="handleDeleteClickBlk(bloque, index2)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div *ngIf="bloque.blocktype == 'slideDinamico'" class="conf" style="background: #636363" > 
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>                                    
+                                              {{bloque.namestate}}
+                                            </td>
+                                            <td>
+                                                <button id="campo_btn" mat-button (click)="handleEditClickBlk(bloque)">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                                <button id="campo_btn" mat-button (click)="handleDeleteClickBlk(bloque, index2)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div *ngIf="bloque.blocktype == 'inputDinamico'" class="conf" style="background: #000000" > 
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>                                    
+                                              {{bloque.namestate}}
+                                            </td>
+                                            <td>
+                                                <button id="campo_btn" mat-button (click)="handleEditClickBlk(bloque)">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                                <button id="campo_btn" mat-button (click)="handleDeleteClickBlk(bloque, index2)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>  
+
+                            <div *ngIf="bloque.blocktype == 'internalProcess'" class="conf" style="background: #F49000" > 
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>                                    
+                                              {{bloque.namestate}}
+                                            </td>
+                                            <td>
+                                                <button id="campo_btn" mat-button (click)="handleEditClickBlk(bloque)">
+                                                    <mat-icon>edit</mat-icon>
+                                                </button>
+                                                <button id="campo_btn" mat-button (click)="handleDeleteClickBlk(bloque, index2)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> 
+                                                        
+                            <div style="position: relative; float: left;  width: 5px; height: 10px;"></div>                           
+                            <div style="float: left;" *ngIf="(bloque.tags_entradas.length) > 0"><!---error-->
+                                <button class="tag_left"  style="float: left;"  [matMenuTriggerFor]="afterMenu">
+                                    <mat-icon class="icono_tag1">playlist_play</mat-icon>
+                                </button>
+                                  <mat-menu #afterMenu="matMenu" xPosition="after">
+                            
+                                        <table class="table table-striped">
+                                              <thead>
+                                                    <tr>
+                                                        <th><h6 id="nombreU" class="card-header">Estados de entrada</h6></th>
+                                                    </tr>
+                                              </thead>
+                                              <tbody>
+                                                    <tr *ngFor="let tags of bloque.tags_entradas">
+                                                          <th><p id="nombreU" class="card-text">  {{ tags }}  </p></th>
+                                                    </tr>
+                                              </tbody>
+                                        </table>    
+                            
+                                  </mat-menu>
+                            
+
+
+
+
+                                <hr id="linea_tag_1" style="position: relative; background: gray; float: right; width: 5px; height: 1px; top:3px;"/>
+                            </div>
+                            
+                            <div style="position: relative; float: right;  width: 5px; height: 10px;"></div> 
+                            <div style="float: right;" *ngIf="bloque.opc_nextid == 'Seleccionar de la lista' && bloque.blocktype != 'quickReply' && bloque.blocktype !='slide' ">
+                                <hr id="linea_tag_2" style="position: relative; background: gray; float: left; width: 5px; height: 1px; top:3px;"/>
+                                <button class="tag_rigth" style="float: right;" [matMenuTriggerFor]="beforeMenu">
+                                    <mat-icon class="icono_tag2">play_arrow</mat-icon>
+                                </button>
+                                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                            
+                                    <table class="table table-striped">
+                                          <thead>
+                                                <tr>
+                                                    <th><h6 id="nombreU" class="card-header">Estado de salida</h6></th>
+                                                </tr>
+                                          </thead>
+                                          <tbody>
+                                                <tr>
+                                                      <th><p id="nombreU" class="card-text">  {{ bloque.next_id }}  </p></th>
+                                                </tr>
+                                          </tbody>
+                                    </table>    
+                        
+                              </mat-menu>
+                            </div>
+
+                            <div style="float: right;" *ngIf="bloque.blocktype=='slide' && bloque.opc_elm=='Una sola transición' && bloque.opc_nextid== 'Seleccionar de la lista'">
+                                <hr id="linea_tag_2" style="position: relative; background: gray; float: left; width: 5px; height: 1px; top:3px;"/>
+                                <button class="tag_rigth" style="float: right;" [matMenuTriggerFor]="beforeMenu">
+                                    <mat-icon class="icono_tag2">play_arrow</mat-icon>
+                                </button>
+                                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                            
+                                    <table class="table table-striped">
+                                          <thead>
+                                                <tr>
+                                                    <th><h6 id="nombreU" class="card-header">Estado de salida</h6></th>
+                                                </tr>
+                                          </thead>
+                                          <tbody>
+                                                <tr>
+                                                      <th><p id="nombreU" class="card-text">  {{ bloque.next_id }}  </p></th>
+                                                </tr>
+                                          </tbody>
+                                    </table>    
+                        
+                              </mat-menu>
+                            </div>
+
+                            <div style="float: right;" *ngIf="bloque.blocktype == 'quickReply' && bloque.opc_nextid.includes('Seleccionar de la lista')">
+                                <hr id="linea_tag_2" style="position: relative; background: gray; float: left; width: 5px; height: 1px; top:3px;"/>
+                                <button class="tag_rigth" style="float: right;" [matMenuTriggerFor]="beforeMenu">
+                                    <mat-icon class="icono_tag2">play_arrow</mat-icon>
+                                </button>
+                                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                            
+                                    <table class="table table-striped">
+                                          <thead>
+                                                <tr>
+                                                    <th><h6 id="nombreU" class="card-header">Estado de salida</h6></th>
+                                                </tr>
+                                          </thead>
+                                          <tbody style="width: 100%;">
+                                              <div style="width: 100%;" *ngFor="let tags_salida of bloque.next_id.split(',') , let indexTags = index ">
+                                                    <tr style="width: 100%;" *ngIf="(bloque.opc_nextid.split(','))[indexTags] == 'Seleccionar de la lista'">
+                                                            <th><p id="nombreU" class="card-text">  {{ tags_salida }}  </p></th>
+                                                      </tr>
+                                              </div>
+                                                
+                                          </tbody>
+                                    </table>    
+                        
+                              </mat-menu>
+                            </div>
+
+                            <div style="float: right;" *ngIf="bloque.blocktype=='slide' && bloque.opc_elm=='Una transición por elemento' && bloque.tag_salida">
+                                <hr id="linea_tag_2" style="position: relative; background: gray; float: left; width: 5px; height: 1px; top:3px;"/>
+                                <button class="tag_rigth" style="float: right;" [matMenuTriggerFor]="beforeMenu">
+                                    <mat-icon class="icono_tag2">play_arrow</mat-icon>
+                                </button>
+                                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                            
+                                    <table class="table table-striped">
+                                          <thead>
+                                                <tr>
+                                                    <th><h6 id="nombreU" class="card-header">Estados de salida</h6></th>
+                                                </tr>
+                                          </thead>
+                                          <tbody style="width: 100%;">
+                                              <div style="width: 100%;" *ngFor="let elemento of bloque.elementos , let indexTags = index ">
+                                                    <tr style="width: 100%;" *ngIf="elemento.botones[0].opc_nextid == 'Seleccionar de la lista'">
+                                                            <th><p id="nombreU" class="card-text">  {{ elemento.botones[0].contentbutton }}  </p></th>
+                                                      </tr>
+                                                    <tr style="width: 100%;" *ngIf="elemento.botones.length == 2 && elemento.botones[1].opc_nextid == 'Seleccionar de la lista'">
+                                                        <th><p id="nombreU" class="card-text">  {{ elemento.botones[1].contentbutton }}  </p></th>
+                                                     </tr>
+                                              </div>
+                                                
+                                          </tbody>
+                                    </table>    
+                        
+                              </mat-menu>
+                            </div>
+                            
+                            
+                         
+                          </div>                          
+                            
+                        </div>
+                        
+                      </div>
+                      <div *ngIf="index2 > 0 && globals.AllBlocks[index2-1].length > 0 && arrbloques.length > 0">
+                        {{posicion_bloques(index2)}}                                        
+                      </div> 
+                      
+                      
+
+                </tr>
+                
+            </tbody>
+            
+        </table>
+        
+    
+    
+    </div>

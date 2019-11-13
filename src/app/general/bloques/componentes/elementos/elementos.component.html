@@ -1,0 +1,110 @@
+<div class="modal-header">
+    <h4 class="modal-title">Crear elemento</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="fromElementos" (ngSubmit)="saveElemento()">
+  
+      <div class="form-group">
+        <label for="title">Titulo*</label>
+        <input type="text" id="title" placeholder="Saludo" class="form-control" formControlName="title" />
+        <span style="color:Red;" *ngIf="fromElementos.controls['title'].touched && fromElementos.controls['title'].errors?.required">Dato requerido.</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="subtitle">Subtitulo*</label>
+        <input type="text" id="subtitle" placeholder="Hola!" class="form-control" formControlName="subtitle" />
+        <span style="color:Red;" *ngIf="fromElementos.controls['subtitle'].touched && fromElementos.controls['subtitle'].errors?.required">Dato requerido.</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="image_url">URL de la imagen*</label>
+        <input type="text" id="image_url" placeholder="Hola!" class="form-control" formControlName="image_url" />
+        <span style="color:Red;" *ngIf="fromElementos.controls['image_url'].touched && fromElementos.controls['image_url'].errors?.required">Dato requerido.</span>
+      </div>
+
+    
+  
+      <div class="form-group">
+        <label for="btn1Title">BOTON 1:</label>
+        <label for="btn1Title">Titulo</label>
+        <input type="text" id="btn1Title" placeholder="Titulo del boton" class="form-control" formControlName="btn1Title" />
+        <label for="btn1Type">Tipo</label>
+
+        <select name="OS" id="btn1Type" placeholder="Selecciona opcion" class="form-control" formControlName="btn1Type" *ngIf="this.globals.bandera_slide_nx != 'Una transición por elemento'">
+          <option value="postback">postback</option>
+          <option value="web_url">web_url</option>
+        </select>
+        <input type="text" id="btn1Type" readonly="readonly" class="form-control"  formControlName="btn1Type" *ngIf="this.globals.bandera_slide_nx == 'Una transición por elemento'"/>
+
+        <label for="opc_nextid1" *ngIf="fromElementos.value.btn1Type == 'postback' && this.globals.bandera_slide_nx == 'Una transición por elemento'">Opciones de siguiente estado*</label>
+        <select name="OS" id="opc_nextid1" placeholder="Selecciona opcion" class="form-control" formControlName="opc_nextid1" *ngIf="fromElementos.value.btn1Type == 'postback' && this.globals.bandera_slide_nx == 'Una transición por elemento'" >
+          <option value="Generar automaticamente">Generar automaticamente</option>
+          <option value="Seleccionar de la lista">Seleccionar de la lista</option>
+        </select>
+
+        <label for="btn1Cont" *ngIf="fromElementos.value.btn1Type == 'postback' && fromElementos.value.opc_nextid1 == 'Seleccionar de la lista' && this.globals.bandera_slide_nx == 'Una transición por elemento'">Seleccionar el contenido del boton</label>
+        <select name="OS" id="btn1Cont" placeholder="Selecciona un estado" class="form-control" formControlName="btn1Cont" *ngIf="globals.AllBlocks && fromElementos.value.btn1Type == 'postback' && fromElementos.value.opc_nextid1 == 'Seleccionar de la lista' && this.globals.bandera_slide_nx == 'Una transición por elemento'">
+          <option *ngFor="let nameST of states, let index=index" [value]="nameST">{{nameST}}</option>
+        </select>        
+
+        <label for="btn1Cont" *ngIf="fromElementos.value.btn1Type == 'postback' && fromElementos.value.opc_nextid1 == 'Generar automaticamente' && this.globals.bandera_slide_nx == 'Una transición por elemento'">Contenido del boton</label>
+        <input type="text" id="btn1Cont" placeholder="Contenido del boton" class="form-control" formControlName="btn1Cont" readonly="readonly" *ngIf="fromElementos.value.btn1Type == 'postback' && fromElementos.value.opc_nextid1 == 'Generar automaticamente' && this.globals.bandera_slide_nx == 'Una transición por elemento'"/>
+
+        <label for="btn1Cont" *ngIf="this.globals.bandera_slide_nx != 'Una transición por elemento'">Contenido del boton</label>
+        <input type="text" id="btn1Cont" placeholder="Contenido del boton" class="form-control" formControlName="btn1Cont" *ngIf="this.globals.bandera_slide_nx != 'Una transición por elemento'" />
+        {{control_required()}}
+
+        <span style="color:Red;" *ngIf="fromElementos.controls['btn1Title'].touched && fromElementos.controls['btn1Title'].errors?.required">Completar todos los campos del boton.</span>
+        <span style="color:Red;" *ngIf="fromElementos.controls['btn1Type'].touched && fromElementos.controls['btn1Type'].errors?.required">Completar todos los campos del boton.</span>
+        
+        <span style="color:Red;" *ngIf="fromElementos.controls['opc_nextid1'].touched && fromElementos.controls['opc_nextid1'].errors?.required">Completar todos los campos del boton.</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="btn2Title">BOTON 2:</label>
+        <label for="btn2Title">Titulo</label>
+        <input type="text" id="btn2Title" placeholder="Consultar" class="form-control" formControlName="btn2Title" />
+        <label for="btn2Type" *ngIf="fromElementos.value.btn2Title != ''">Tipo</label>
+        <select name="OS" id="btn2Type" placeholder="Selecciona una opción de boton" class="form-control" formControlName="btn2Type" *ngIf="fromElementos.value.btn2Title != ''" required>
+          <option value="postback">postback</option>
+          <option value="web_url">web_url</option>
+        </select>
+
+
+        <label for="opc_nextid2" *ngIf="fromElementos.value.btn2Title != '' && fromElementos.value.btn2Type == 'postback' && this.globals.bandera_slide_nx == 'Una transición por elemento'">Opciones de siguiente estado*</label>
+        <select name="OS" id="opc_nextid2" placeholder="Selecciona opcion" class="form-control" formControlName="opc_nextid2" *ngIf="fromElementos.value.btn2Title != '' && fromElementos.value.btn2Type == 'postback' && this.globals.bandera_slide_nx == 'Una transición por elemento'">
+          <option value="Generar automaticamente">Generar automaticamente</option>
+          <option value="Seleccionar de la lista">Seleccionar de la lista</option>
+        </select>
+        
+
+        <label for="btn2Cont" *ngIf="fromElementos.value.btn2Type == 'postback' && fromElementos.value.opc_nextid2 == 'Seleccionar de la lista' && this.globals.bandera_slide_nx == 'Una transición por elemento' && fromElementos.value.btn2Title != ''">Seleccionar el contenido del boton</label>
+        <select name="OS" id="btn2Cont" placeholder="Selecciona un estado" class="form-control" formControlName="btn2Cont" *ngIf="globals.AllBlocks && fromElementos.value.btn2Type == 'postback' && fromElementos.value.opc_nextid2 == 'Seleccionar de la lista'  && this.globals.bandera_slide_nx == 'Una transición por elemento' && fromElementos.value.btn2Title != ''" >
+          <option *ngFor="let nameST of states, let index=index" [value]="nameST">{{nameST}}</option>
+        </select>
+
+
+        <label for="btn2Cont" *ngIf="fromElementos.value.btn2Type == 'postback' && fromElementos.value.opc_nextid2 == 'Generar automaticamente' && this.globals.bandera_slide_nx == 'Una transición por elemento' && fromElementos.value.btn2Title != ''">Contenido del boton</label>
+        <input type="text" id="btn2Cont" placeholder="Contenido del boton" class="form-control" formControlName="btn2Cont" readonly="readonly" *ngIf="fromElementos.value.btn2Type == 'postback' && fromElementos.value.opc_nextid2 == 'Generar automaticamente' && this.globals.bandera_slide_nx == 'Una transición por elemento' && fromElementos.value.btn2Title != ''"/>
+
+        
+        <label for="btn2Cont" *ngIf="(fromElementos.value.btn2Type == 'web_url' && fromElementos.value.btn2Title != '') || (this.globals.bandera_slide_nx != 'Una transición por elemento' && fromElementos.value.btn2Title != '')">Contenido del boton</label>
+        <input type="text" id="btn2Cont" placeholder="Contenido del boton" class="form-control" formControlName="btn2Cont" *ngIf="(fromElementos.value.btn2Type == 'web_url' && fromElementos.value.btn2Title != '') || (this.globals.bandera_slide_nx != 'Una transición por elemento' && fromElementos.value.btn2Title != '')" />
+
+        <span style="color:Red;" *ngIf=" fromElementos.value.btn2Title != '' && fromElementos.controls['btn2Type'].touched && fromElementos.controls['btn2Type'].errors?.required">Dato requerido.</span>
+        <span style="color:Red;" *ngIf=" fromElementos.value.btn2Title != '' && fromElementos.controls['btn2Cont'].touched && fromElementos.controls['btn2Cont'].errors?.required">Dato requerido.</span>
+
+        <span style="color:Red;" *ngIf=" fromElementos.value.btn2Title != '' && fromElementos.controls['opc_nextid2'].touched && fromElementos.controls['opc_nextid1'].errors?.required">Completar todos los campos del boton.</span>
+      </div>
+  
+      
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button class="btn btn-primary" (click)="saveElemento()" [disabled]="fromElementos.invalid">Save</button>
+  </div>
+  
